@@ -9,20 +9,14 @@ sap.ui.define([
 	return Controller.extend("logaligroup.SAPUI5.controller.App", {
 		// funciones que la vista que usa éste controlador tendrá acceso
 
-
-
 		onInit: function () {
 
 		},
 
-		onShowHello: function () {
-			
-			//read text from i18n / model
-			var sHello = this.getView().getModel("i18n").getResourceBundle().getText("sayHello");
-			var sName = this.getView().getModel().getProperty("/recipient/name");
-			var sMsg = sHello.concat(" ").concat(sName);
-			
-			MessageToast.show(sMsg);
+		onOpenHeader: function () {
+
+			//se llama a la funcion openHelloDialog del Component
+			this.getOwnerComponent().openHelloDialog();
 
 		}
 	});

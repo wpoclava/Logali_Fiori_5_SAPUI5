@@ -1,8 +1,9 @@
 sap.ui.define([
 		"sap/ui/core/UIComponent",
 		"logaligroup/SAPUI5/model/models",
-		"sap/ui/model/resource/ResourceModel"
-	], function (UIComponent, models, ResourceModel) {
+		"sap/ui/model/resource/ResourceModel",
+		"./controller/HelloDialog"
+	], function (UIComponent, models, ResourceModel, HelloDialog) {
 
 		// se necesita devolver una instancia del mismo component.js
 		// en base a una extension del padre
@@ -26,6 +27,24 @@ sap.ui.define([
 				});
 
 				this.setModel(i18nModel, "i18n");
+
+				//Se crea una instancia de atributo
+				this._helloDialog = new HelloDialog(this.getRootControl());
+
+			},
+
+			//cuando se sale del componente se destruye la instancia this._HelloDialog
+			exit: function () {
+
+				this._helloDialog.destroy();
+				delete this._helloDialog;
+
+			},
+
+			//llamar a la funcionalidad del objeto gestionado, es decir llamar al open
+			openHelloDialog: function () {
+
+				this._helloDialog.open();
 
 			}
 
