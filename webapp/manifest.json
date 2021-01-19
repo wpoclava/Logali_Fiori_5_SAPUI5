@@ -8,9 +8,28 @@
 			"version": "1.0.0"
 		},
 		"title": "{{appTitle}}",
-		"description": "{{appDescription}}"
+		"description": "{{appDescription}}",
+		"dataSources": {
+			"remoteData": {
+				"uri": "/destinations/northwind/V2/Northwind/Northwind.svc",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			},
+			"Northwind.svc": {
+				"uri": "/northwind/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -27,7 +46,6 @@
 			"phone": true
 		}
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "logaligroup.SAPUI5.view.App",
@@ -55,14 +73,26 @@
 				}
 			},
 			"invoice": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "Invoices.json"
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "remoteData"
+			},
+			"invoiceWz": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "Northwind.svc",
+				"preload": true
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		}
 	}
 }
