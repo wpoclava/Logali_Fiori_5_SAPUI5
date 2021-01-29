@@ -1,0 +1,6 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="logaligroup.SAPUI5.controller.Detail"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>detailPageTitle}" showNavButton="true" navButtonPress=".onNavBack">
+		<ObjectHeader title="{invoiceWz>ProductName}"></ObjectHeader>
+	</Page>
+</mvc:View>

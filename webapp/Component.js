@@ -31,6 +31,9 @@ sap.ui.define([
 				//Se crea una instancia de atributo
 				this._helloDialog = new HelloDialog(this.getRootControl());
 
+				//create the views based on the url/bash
+				this.getRouter().initialize();
+
 			},
 
 			//cuando se sale del componente se destruye la instancia this._HelloDialog
