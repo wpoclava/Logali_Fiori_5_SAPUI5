@@ -2,8 +2,9 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/routing/History",
 	"sap/ui/core/UIComponent",
-	"sap/m/MessageToast"
-], function (Controller, History, UIComponent, MessageToast) {
+	"sap/m/MessageToast",
+	"sap/ui/model/json/JSONModel"
+], function (Controller, History, UIComponent, MessageToast, JSONModel) {
 	"use strict";
 
 	return Controller.extend("logaligroup.SAPUI5.controller.Detail", {
@@ -16,6 +17,7 @@ sap.ui.define([
 		onInit: function () {
 			var oRouter = UIComponent.getRouterFor(this);
 			oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
+			this.getView().setModel(new JSONModel({currency: "EUR"}), "view");
 		},
 
 		_onObjectMatched: function (oEvent) {

@@ -1,6 +1,16 @@
 <mvc:View controllerName="logaligroup.SAPUI5.controller.App" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
 	xmlns:core="sap.ui.core">
 	<Page title="{i18n>homePageTitle}">
+		<landmarkInfo>
+			<PageAccessibleLandmarkInfo 
+				rootRole="Region"
+				rootLabel="{i18n>Overview_rootLabel}"
+				contentRole="Main"
+				contentLabel="{i18n>Overview_contentLabel}"
+				headerRole="Banner"
+				headerLabel="{i18n>Overview_headerLabel}"
+			/>
+		</landmarkInfo>
 		<headerContent>
 			<Button id="helloDialogHeader" icon="sap-icon://world" press=".onOpenHeader" class="sapUiSmallMarginEnd"/>
 		</headerContent>

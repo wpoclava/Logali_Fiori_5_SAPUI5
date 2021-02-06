@@ -3,7 +3,20 @@
 	xmlns:html="http://www.w3.org/1999/xhtml" 
 	xmlns:lp="logaligroup.SAPUI5.control">
 	<Page title="{i18n>detailPageTitle}" showNavButton="true" navButtonPress=".onNavBack">
-		<ObjectHeader title="{invoiceWz>ProductName}"></ObjectHeader>
+		<ObjectHeader
+		responsive="true"
+		fullScreenOptimized="true"
+		intro="{invoiceWz>ShipperName}"
+		title="{invoiceWz>ProductName}"
+		number="{ 
+			parts: [{path: 'invoiceWz>ExtendedPrice'}, {path: 'view>/currency'}], 
+			type: 'sap.ui.model.type.Currency', 
+			formatOptions: { showMeasure: false } }"
+			numberUnit="{view>/currency}">
+		<attributes>
+			<ObjectAttribute title="{i18n>quantityTitle}" text="{invoiceWz>Quantity}"></ObjectAttribute>
+		</attributes>
+		</ObjectHeader>
 		<lp:ProductRating id="rating" class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>
 	</Page>
 </mvc:View>

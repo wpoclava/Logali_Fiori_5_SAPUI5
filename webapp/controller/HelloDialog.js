@@ -1,7 +1,8 @@
 sap.ui.define([
 	"sap/ui/base/ManagedObject",
-	"sap/ui/core/Fragment"
-], function (ManagedObject, Fragment) {
+	"sap/ui/core/Fragment",
+	"sap/ui/core/syncStyleClass"
+], function (ManagedObject, Fragment, syncStyleClass) {
 
 	return ManagedObject.extend("logaligroup.SAPUI5.controller.HelloDialog", {
 
@@ -45,6 +46,7 @@ sap.ui.define([
 				}).then(function (oDialog) {
 					//agregamos las dependencias del dialogo para que tenga acceso a los modelos
 					oView.addDependent(oDialog);
+					syncStyleClass(oView.getController().getOwnerComponent().getContentDensityClass(), oView, oDialog);
 					//abrimos el dialogo la primera vez
 					oDialog.open();
 				});

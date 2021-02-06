@@ -10,7 +10,7 @@ sap.ui.define([
 		// funciones que la vista que usa éste controlador tendrá acceso
 
 		onInit: function () {
-
+			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 		},
 
 		onOpenHeader: function () {
